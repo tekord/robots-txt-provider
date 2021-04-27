@@ -1,0 +1,30 @@
+<?php
+
+namespace Tekord\RobotsTxtProvider;
+
+use Tekord\RobotsTxtProvider\Contracts\ContentProvider;
+use Tekord\RobotsTxtProvider\Exceptions\Exception;
+
+/**
+ * @author Cyrill Tekord
+ */
+class FileContentProvider implements ContentProvider {
+    public bool $throwExceptionIfFileIsNotFound = false;
+
+    private string $filePath;
+
+    public function __construct(string $string) {
+        $this->filePath = $string;
+    }
+
+    public function getContent(): string {
+        if (!file_exists($this->filePath)) {
+            if ($this->throwExceptionIfFileIsNotFound)
+                throw new Exception("File not found: " . $this->filePath);
+
+            return '';
+        }
+
+        return file_get_contents($this->filePath);
+    }
+}
