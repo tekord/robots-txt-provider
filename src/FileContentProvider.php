@@ -17,12 +17,12 @@ class FileContentProvider implements ContentProvider {
         $this->filePath = $string;
     }
 
-    public function getContent(): string {
+    public function getContent(): ?string {
         if (!file_exists($this->filePath)) {
             if ($this->throwExceptionIfFileIsNotFound)
                 throw new Exception("File not found: " . $this->filePath);
 
-            return '';
+            return null;
         }
 
         return file_get_contents($this->filePath);

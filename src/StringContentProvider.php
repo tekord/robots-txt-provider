@@ -14,10 +14,7 @@ class StringContentProvider implements ContentProvider {
         $this->string = $string;
     }
 
-    public function getContent(): string {
-        if ($this->string === null)
-            return '';
-
+    public function getContent(): ?string {
         return $this->string;
     }
 }

@@ -30,7 +30,7 @@ class CallbackContentProvider implements ContentProvider {
         return $this->data;
     }
 
-    public function getContent(): string {
+    public function getContent(): ?string {
         return call_user_func($this->builderCallback, $this->data);
     }
 }
