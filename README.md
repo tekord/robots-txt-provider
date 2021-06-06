@@ -91,7 +91,7 @@ $contentProvider = new StringContentProvider($content);
 ### FileContentProvider
 
 ```php
-$contentProvider = new FileContentProvider(__DIR__ . "storage/static/default-robots.txt");
+$contentProvider = new FileContentProvider(__DIR__ . "/storage/static/default-robots.txt");
 ```
 
 ### CallbackContentProvider
